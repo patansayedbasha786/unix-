@@ -1,0 +1,46 @@
+import pandas as pd
+#lode the engineering data set
+df=pd.read_csv("machine_dataa.csv")
+#Display the data set
+print("engeeniring dataset")
+print(df)
+#dispaly the first 5 records
+print("\n first 5 records")
+print(df.head())
+#display the last 5 records
+print("\nlast 5 records")
+print(df.tail())
+# dispalay the number of rows and colums
+print("\ndataset sharp")
+print(df.shape)
+#display the colums names
+print("\n colums names")
+print(df.columns)
+#display the data types
+print("\n data types ")
+print(df.dtypes)
+#dispalay the basic information
+print("\n dataset information")
+df.info
+#check missing values
+print("\n missing values")
+print(df.isnull().sum())
+#generating the statistical summary
+print("\nstatistical summary")
+print(df.describe())
+# calclute the  mean value
+print("\n avarage the values")
+print("temperature:",df["temperature"].mean())
+print("pressure:",df["pressure"].mean())
+print("vibration:",df["vibration"].mean())
+print("operating hours:",df["operating_hours"].mean())
+#finding the maximum and minimum  temperature
+print("\n temoperature anylasis")
+print(("maximum termperature:"),df["temperature"].max())
+print(("minimum temperature:"),df["temperature"].min())
+#count the machines according to the staticts
+print("\n machine status")
+print(df["status"].value_counts())
+#display the machines with high temnperature
+print("\n mac hines with temperature above 85")
+print(df[df["temperature"]>85])
