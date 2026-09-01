@@ -1,0 +1,78 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+Load engineering dataset
+
+df = pd.read_csv("machine_data_vis.csv")
+print("ENGINEERING DATASET")
+print(df)
+
+------------------------------------------------
+
+1. HISTOGRAM
+
+------------------------------------------------
+
+plt.figure(figsize=(7,5))
+plt.hist(df["Temperature"], bins=5, edgecolor="black")
+plt.xlabel("Temperature")
+plt.ylabel("Number of Machines")
+plt.title("Distribution of Machine Temperature")
+plt.show()
+
+------------------------------------------------
+
+2. SCATTER PLOT
+
+------------------------------------------------
+
+plt.figure(figsize=(7,5))
+plt.scatter(
+df["Temperature"],
+df["Vibration"]
+)
+plt.xlabel("Temperature")
+plt.ylabel("Vibration")
+plt.title("Temperature vs Vibration")
+plt.show()
+
+------------------------------------------------
+
+3. BAR CHART
+
+------------------------------------------------
+
+status_count = df["Status"].value_counts()
+plt.figure(figsize=(7,5))
+plt.bar(
+status_count.index,
+status_count.values
+)
+plt.xlabel("Machine Status")
+plt.ylabel("Number of Machines")
+plt.title("Machine Status Distribution")
+plt.show()
+
+------------------------------------------------
+
+4. CORRELATION HEATMAP
+
+------------------------------------------------
+
+numeric_data = df[
+["Temperature",
+"Pressure",
+"Vibration",
+"Operating_Hours"]
+]
+correlation = numeric_data.corr()
+plt.figure(figsize=(8,6))
+sns.heatmap(
+correlation,
+annot=True,
+cmap="coolwarm",
+fmt=".2f"
+)
+plt.title("Correlation Heatmap of Engineering Parameters")
+plt.show()
